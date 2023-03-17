@@ -62,5 +62,5 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.render-backend-container.outputs.task-definition }}
-#           service: test
-#           cluster: test
+          service: backend
+          cluster: backend
