@@ -37,7 +37,7 @@
             }
         }
     ],
-    "family": "backend",
+    "family": "backendtaskdef",
     "executionRoleArn": "arn:aws:iam::062550047379:role/ecsRole",
     "networkMode": "awsvpc",
     "volumes": [],
