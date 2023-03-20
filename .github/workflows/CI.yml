@@ -9,7 +9,7 @@ on:
     branches:
     - main
 
-#specify the operating system using runs-on
+#specify the operating system using runs-on ubuntu
 jobs:
   Unit_Test_and_Lint_Check:
     runs-on: ubuntu-latest    
