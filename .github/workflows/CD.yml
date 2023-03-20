@@ -35,7 +35,7 @@ jobs:
         id: build-image
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: backend
+          REPOSITORY: backendecr
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
@@ -51,13 +51,10 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
           environment-variables: |
               PORT=${{ secrets.PORT }}
-              CIW_COLLECTION_NAME=${{ secrets.CIW_COLLECTION_NAME }}
-              CONNECTION_STRING=${{ secrets.CONNECTION_STRING }}
-              OPENAI_APIKEY=${{ secrets.OPENAI_APIKEY }}
+              JWT_LIFETIME=${{ secrets.JWT_LIFETIME }}
+              MONGO_URI=${{ secrets.MONGO_URI }}
               JWT_SECRET=${{ secrets.JWT_SECRET }}
-              OPENAI_APIURL=${{ secrets.OPENAI_APIURL }}
-              TEST_EMAIL=${{ secrets.TEST_EMAIL }}
-              TEST_EMAIL_PASSWORD=${{ secrets.TEST_EMAIL_PASSWORD }}
+        
       - name: Deploy to Amazon ECS service
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
